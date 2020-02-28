@@ -1,17 +1,13 @@
 ---
 
 
-- name: 1. install Apache
+- name: 1. install Apache & PHP module for Apache
   apt:
-          name: apache2
-          state: present
+          name: [apache2, libapache2-mod-php7.2]
+          state: latest
+          update_cache: true
 
-- name: 2. install PHP module for Apache
-  apt:
-          name: libapache2-mod-php7.2
-          state: present
-
-- name: 3. start Apache
+- name: 2. start Apache
   service:
           name: apache2
           state: started

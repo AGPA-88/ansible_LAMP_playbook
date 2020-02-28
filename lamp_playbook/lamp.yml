@@ -9,5 +9,5 @@
   roles:
       - apache2
       - mariadb
-            
+      - php-fpm            
 
