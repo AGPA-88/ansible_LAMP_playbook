@@ -1,0 +1,58 @@
+---
+
+- name: Install php-fpm
+  become: true
+  apt:
+          name: php-fpm
+          state: latest
+          update_cache: true
+
+- name: Install php-gd
+  become: true
+  apt:
+          name: php-gd
+          state: latest
+          update_cache: true
+
+- name: Install php-curl
+  become: yes
+  apt:
+          name: php-curl
+          state: latest
+          update_cache: true
+
+
+- name: Install php-mysql
+  become: yes
+  apt:
+          name: php-mysql
+          state: latest
+          update_cache: true
+
+
+- name: Install php-dom
+  become: yes
+  apt:
+          name: php-dom
+          state: latest
+          update_cache: true
+
+- name: Install php-xml
+  become: true
+  apt:
+          name: php-xml
+          state: latest
+          update_cache: true
+
+
+- name: Configure php-fom with apache2
+  become: true
+  copy:
+          src: files/www.conf
+          dest: /etc/php/7.2/fpm/pool.d/
+
+- name: Restart php-fpm
+  become: yes
+  service:
+          name: php7.2-fpm
+          state: restarted
